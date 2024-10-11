@@ -26,11 +26,12 @@ public class ProductoController {
      * @see guardarDatos En este caso es para guardar que has modificar un producto
      * */
     public void modificarProducto(int codigo, Producto nuevoProducto) {
-        for (int i = 0; i < productos.size(); i++) {
-            if (productos.get(i).getCodigo() == codigo) {
+    	for (int i = 0; i < productos.size(); i++) {
+            Producto producto = productos.get(i);
+            if (producto.getCodigo() == codigo) {
                 productos.set(i, nuevoProducto);
                 guardarDatos();
-                return;
+                break;
             }
         }
     }
@@ -39,15 +40,25 @@ public class ProductoController {
      * @see guardarDatos() En este caso es para guardar que has eliminar un producto
      * */
     public void eliminarProducto(int codigo) {
-        productos.removeIf(producto -> producto.getCodigo() == codigo);
-        guardarDatos();
+    	 for (int i = 0; i < productos.size(); i++) {
+             if (productos.get(i).getCodigo() == codigo) {
+                 productos.remove(i);
+                 guardarDatos();
+                 break;
+             }
+         }
     }
 
     /*
      * @return obtener un producto por codigo
      */
     public Producto obtenerProducto(int codigo) {
-        return productos.stream().filter(p -> p.getCodigo() == codigo).findFirst().orElse(null);
+    	for (Producto producto : productos) {
+            if (producto.getCodigo() == codigo) {
+                return producto;
+            }
+        }
+        return null; 
     }
 
     /*
@@ -59,8 +70,11 @@ public class ProductoController {
 
     // guardar los datos en el fichero
     private void guardarDatos() {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(archivoDatos))) {
-            oos.writeObject(productos);
+    	try {
+            FileOutputStream fileOut = new FileOutputStream(archivoDatos);
+            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+            objectOut.writeObject(productos); // escribimos la lista de productos en el archivo
+            objectOut.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -69,12 +83,16 @@ public class ProductoController {
     // cargar datos desde el fichero
     @SuppressWarnings({ "unchecked"})
 	private void cargarDatos() {
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(archivoDatos))) {
-            productos = (List<Producto>) ois.readObject();
+    	try {
+            FileInputStream fileIn = new FileInputStream(archivoDatos);
+            ObjectInputStream objectIn = new ObjectInputStream(fileIn);
+            productos = (List<Producto>) objectIn.readObject();
+            objectIn.close();
         } catch (FileNotFoundException e) {
-            System.out.println("Archivo de datos no encontrado, creando uno nuevo...");
+            System.out.println("No se encontró el archivo. Se creará uno nuevo cuando guardes productos.");
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+
     }
 }
