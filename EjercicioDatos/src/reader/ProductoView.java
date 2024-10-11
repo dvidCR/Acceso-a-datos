@@ -53,7 +53,7 @@ public class ProductoView {
         } while (opcion != 0);
     }
 
-    // mostrar el  menu
+    // mostrar el menu
     private static void mostrarMenu() {
         System.out.println("--------- Menu ---------");
         System.out.println("1. Agregar producto");
@@ -139,7 +139,7 @@ public class ProductoView {
         System.out.println("Producto eliminado.");
     }
 
-    //listar 
+    // listar los productos
     private static void listarProductos() {
         System.out.println("Listado de productos:");
         List<Producto> productos = controller.listarProductos();

@@ -7,19 +7,24 @@ import java.util.List;
 public class ProductoController {
     private List<Producto> productos;
     private final String archivoDatos = "productos.dat";  // ruta fija del archivo
-
+    
+    /*@see cargarDatos() Para cargar el contenido del fichero*/
     public ProductoController() {
         productos = new ArrayList<>();
         cargarDatos();
     }
 
-    // añadir un  producto
+    /*
+     * @see guardarDatos() Para añadir un producto
+     * */
     public void agregarProducto(Producto producto) {
         productos.add(producto);
         guardarDatos();
     }
 
-    // modificar un producto
+    /*
+     * @see guardarDatos En este caso es para guardar que has modificar un producto
+     * */
     public void modificarProducto(int codigo, Producto nuevoProducto) {
         for (int i = 0; i < productos.size(); i++) {
             if (productos.get(i).getCodigo() == codigo) {
@@ -30,18 +35,24 @@ public class ProductoController {
         }
     }
 
-    // eliminar un producto
+    /*
+     * @see guardarDatos() En este caso es para guardar que has eliminar un producto
+     * */
     public void eliminarProducto(int codigo) {
         productos.removeIf(producto -> producto.getCodigo() == codigo);
         guardarDatos();
     }
 
-    // obtener un producto por codigo
+    /*
+     * @return obtener un producto por codigo
+     */
     public Producto obtenerProducto(int codigo) {
         return productos.stream().filter(p -> p.getCodigo() == codigo).findFirst().orElse(null);
     }
 
-    // Listar los productos
+    /*
+     * @return Listar los productos
+     */
     public List<Producto> listarProductos() {
         return productos;
     }
