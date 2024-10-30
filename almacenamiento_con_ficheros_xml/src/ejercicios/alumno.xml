@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alumno>
+    <nombre>Juan Pérez</nombre>
+    <cicloFormativo>Desarrollo de Aplicaciones Multiplataforma</cicloFormativo>
+    <curso>Segundo</curso>
+    <modulos>
+        <modulo>
+            <nombre>Desarrollo de Interfaces</nombre>
+            <codigo>DI</codigo>
+        </modulo>
+        <modulo>
+            <nombre>Programación Multimedia y Dispositivos Móviles</nombre>
+            <codigo>PMDM</codigo>
+        </modulo>
+        <modulo>
+            <nombre>Programación de Servicios y Procesos</nombre>
+            <codigo>PSP</codigo>
+        </modulo>
+        <modulo>
+            <nombre>Sistemas de Gestión Empresarial</nombre>
+            <codigo>SGE</codigo>
+        </modulo>
+    </modulos>
+</alumno>
