@@ -1,4 +1,4 @@
-package e2_alumnos;
+package e2_alumnos_todo;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

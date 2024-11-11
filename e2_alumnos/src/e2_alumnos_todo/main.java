@@ -1,4 +1,4 @@
-package e2_alumnos;
+package e2_alumnos_todo;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -14,36 +14,21 @@ public class main {
 
 	public static void main(String[] args) {
 		
-		List<TrackPoint> tracklst = cargarTrackPoints("trail.json");
-		
-        if (!tracklst.isEmpty()) {
-	        calcularElevacionMaxMin(tracklst);
-			calcularLaps(tracklst);
-        } else {
-        	System.out.println("El fichero esta vacia");
-        }
+		//TODO: carga el archivo trail.json
+
+        //TODO: comprueba que la lista no este vacia
+       
+
+        //TODO: llama al metodo calcularElevacionMaxMin
+        
+		//TODO: llama al metodo calcularLaps
 		
     }
 
     // Método para cargar los puntos de seguimiento desde un archivo JSON
     public static List<TrackPoint> cargarTrackPoints(String rutaArchivo) {
-    	List<TrackPoint> js = new ArrayList<>();
-    	
-    	try (FileReader fr = new FileReader(rutaArchivo)) {
-    		JSONObject modulo = new JSONObject(new JSONTokener(fr));
-    		JSONArray ar = modulo.getJSONArray("trackPoints");
-    		
-	        for (int i = 0; i < ar.length(); i++) {
-	        	JSONObject jObject = ar.getJSONObject(i);
-	        	TrackPoint tp = TrackPoint.fromJSON(jObject);
-	        	js.add(tp);
-	        }
-	        
-    	} catch (IOException e) {
-    		System.out.println("Error al cargar el fichero");
-    	}
-    	
-    	return js;
+        //TODO: completa el metodo
+        return null;
     }
 
     // Método para calcular y mostrar la elevación máxima y mínima
