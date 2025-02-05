@@ -1,0 +1,10 @@
+<hibernate-mapping>
+	<class name="Model.Empleado" table="employees" >
+		<id column="emp_no" name="numeroEmpleado" />
+		<property column="birth_date" name="fechaNacimiento" />
+		<property column="first_name" name="nombre" />
+		<property column="last_name" name="apellidos" />
+		<property column="gender" name="genero" />
+		<property column="hire_date" name="fechaAlta" />
+	</class>
+</hibernate-mapping>
