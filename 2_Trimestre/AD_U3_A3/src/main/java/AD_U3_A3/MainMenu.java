@@ -12,7 +12,7 @@ public class MainMenu {
 
     public static void main(String[] args) {
           sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-//        Session laSesion=HibernateUtil.getSessionFactory().getCurrentSession();
+//        Session laSesion1=HibernateUtil.getSessionFactory().getCurrentSession();
 //        laSesion.getTransaction().begin();
         
         Scanner scanner = new Scanner(System.in);
