@@ -1,28 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
- <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
- <hibernate-configuration>
+<!-- Definición del tipo de documento XML, indicando que este es un archivo de configuración de Hibernate -->
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
     <session-factory>
-    
-     	<!-- Configuración de conexión -->
+        <!-- Configuración de conexión a la base de datos -->
+        
+        <!-- El driver JDBC que Hibernate usará para conectarse a la base de datos -->
         <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+
+        <!-- URL de conexión a la base de datos. En este caso, una base de datos MySQL local en el puerto 3306 -->
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/mi_base_de_datos</property>
+
+        <!-- El nombre de usuario para la base de datos -->
         <property name="hibernate.connection.username">root</property>
+
+        <!-- La contraseña correspondiente al usuario de la base de datos -->
         <property name="hibernate.connection.password">root</property>
 
-        <!-- Dialecto de MySQL -->
+        <!-- El dialecto SQL que Hibernate utilizará para generar consultas adecuadas a la base de datos seleccionada (MySQL en este caso) -->
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 
-       	<!-- Pool de conexiones -->
+        <!-- Configuración del pool de conexiones (cantidad máxima de conexiones simultáneas permitidas a la base de datos) -->
         <property name="hibernate.connection.pool_size">10</property>
 
-        <!-- Contexto de sesión -->
+        <!-- Contexto de sesión: aquí estamos configurando el comportamiento de la sesión en base al hilo (thread). Esto es útil para aplicaciones multi-hilo -->
         <property name="hibernate.current_session_context_class">thread</property>
 
-        <!-- Mostrar sentencias SQL en la consola -->
+        <!-- Si se establece en true, Hibernate imprimirá las sentencias SQL generadas en la consola. Muy útil para depuración -->
         <property name="hibernate.show_sql">true</property>
 
-        <!-- Validar integridad de la base de datos -->
+        <!-- Configuración sobre la validación del esquema. En este caso, Hibernate solo valida si el esquema está sincronizado con las clases de entidad -->
         <property name="hibernate.hbm2ddl.auto">validate</property>
+        
+        <!-- Aquí puedes agregar propiedades adicionales, como configuraciones de caché, pero por ahora este archivo cubre lo básico. -->
 
     </session-factory>
 </hibernate-configuration>
