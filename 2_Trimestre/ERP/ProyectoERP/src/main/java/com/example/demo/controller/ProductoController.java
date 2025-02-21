@@ -32,14 +32,14 @@ public class ProductoController {
         return servicio.guardarProducto(producto);
     }
 
-    @DeleteMapping
-    public void eliminarProducto(@RequestParam Long id) {
+    @DeleteMapping("/{id}")
+    public void eliminarProducto(@PathVariable Long id) {
         servicio.eliminarProducto(id);
     }
 
-    @PutMapping
-    public Producto actualizarProducto(@RequestParam Long id, @RequestBody Producto producto) {
-        return servicio.actualizarProducto(id, producto);
+    @PutMapping("/{id}")
+    public void actualizarProducto(@PathVariable Long id, @RequestBody Producto producto) {
+        servicio.actualizarProducto(id, producto);
     }
 
     @GetMapping("/paginado")
